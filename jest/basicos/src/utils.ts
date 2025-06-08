@@ -16,8 +16,19 @@ export class Utils {
         return Math.min(Math.max(valor, min), max);
     }
 
-    static diferencaDeArrays(array1: number[], array2: number[]): number[] {
+    static diferencaDeArrays<T>(array1: T[], array2: T[]): T[] {
         return array1.filter(item => !array2.includes(item));
     }
-    
+ 
+    static removerDuplicados<T>(array: T[]): T[] {
+        return Array.from(new Set(array));
+    }
+
+    static captalizarStrings(s: string): string {
+        if(!s) return "";
+
+        return s.split(" ").map((letra) => {
+            return letra.charAt(0).toUpperCase() + letra.slice(1).toLowerCase();
+        }).join(" ");
+    }
 }
