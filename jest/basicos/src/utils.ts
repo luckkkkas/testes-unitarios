@@ -31,4 +31,21 @@ export class Utils {
             return letra.charAt(0).toUpperCase() + letra.slice(1).toLowerCase();
         }).join(" ");
     }
+
+    static encontrarPorId(array:any, id:number){
+        return array.find((item:any) => item.id === id);
+    }
+
+    static inverterObjeto(objeto: any):any{
+        return Object.entries(objeto).reduce((novoObjeto:any, [chave, valor]) => {
+            novoObjeto[valor as string] = chave;
+            return novoObjeto;
+        },{} as Record<string, string>);
+    }
+
+    static deletarPropriedades(objeto: any, propriedades: string): any {
+        const novoObjeto = { ...objeto };
+        delete novoObjeto[propriedades];
+        return novoObjeto;
+    }
 }
