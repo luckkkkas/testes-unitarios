@@ -44,6 +44,26 @@ describe("Testa a função inverterObjeto", () => {
     test("Deve inverter um objeto com valores duplicados", () => {
         const objeto = { a: "1", b: "1" };
         const resultado = Utils.inverterObjeto(objeto);
-        expect(resultado).toEqual({ "1": "b" }); // O último valor prevalece
+        expect(resultado).toEqual({ "1": "b" });
+    });
+});
+
+describe("Testa a função removerDuplicados", () => {
+    test("Deve remover duplicados de um array de números", () => {
+        const array = [1, 2, 2, 3, 4, 4];
+        const resultado = Utils.removerDuplicados(array);
+        expect(resultado).toEqual([1, 2, 3, 4]);
+    });
+
+    test("Deve remover duplicados de um array de strings", () => {
+        const array = ["a", "b", "b", "c"];
+        const resultado = Utils.removerDuplicados(array);
+        expect(resultado).toEqual(["a", "b", "c"]);
+    });
+
+    test("Deve retornar um array vazio se o array original estiver vazio", () => {
+        const array: any[] = [];
+        const resultado = Utils.removerDuplicados(array);
+        expect(resultado).toEqual([]);
     });
 });
