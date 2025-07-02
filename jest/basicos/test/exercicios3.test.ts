@@ -1,5 +1,15 @@
 import { Utils } from "../src/utils";
 
+beforeAll(() => {
+    console.log("Tudo que precisa ser feito antes de execitar os teste!");
+    //exemplo: conectar a uma base de dados; 
+})
+
+beforeEach(() => {
+    console.log("Tudo que precisa ser feito antes de executar cada teste!");
+    //exemplo: uma váriavel que seja comun para os testes, posso resetar ela aqui 
+})
+
 describe("Testa a função encontrarPorId", () => {
     test("Deve retornar o objeto com Id correspondente", () => {
         const array = [
@@ -23,7 +33,7 @@ describe("Testa a função encontrarPorId", () => {
         const array: any[] = [];
         expect(Utils.encontrarPorId(array, 1)).toBeUndefined();
 
-        const array2: any[] = ["array","babel","caches"];
+        const array2: any[] = ["array", "babel", "caches"];
         expect(Utils.encontrarPorId(array2, 1)).toBeUndefined();
     });
 })

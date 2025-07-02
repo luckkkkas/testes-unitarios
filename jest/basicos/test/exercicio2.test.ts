@@ -1,5 +1,15 @@
 import { Utils } from "../src/utils";
 
+beforeAll(() =>{
+    console.log("Tudo que precisa ser feito antes de execitar os teste!");
+    //exemplo: conectar a uma base de dados; 
+})
+
+beforeEach(() =>{
+    console.log("Tudo que precisa ser feito antes de executar cada teste!");
+    //exemplo: uma váriavel que seja comun para os testes, posso resetar ela aqui 
+})
+
 describe("Testar a função diferença de arrays", () => {
     test("caso arrays de numeros diferentes", () =>{
         expect(Utils.diferencaDeArrays([3,4,5,6],[5,6,7])).toEqual([3,4]);
@@ -47,4 +57,14 @@ describe("Testar a função captalizarStrings", () => {
         expect(Utils.captalizarStrings("TESTE DE UNIDADE")).toEqual("Teste De Unidade");
     })
 
+});
+
+afterEach(() =>{
+    //tudo que desejar fazer após cada teste;
+    //exemplo resetar variável;
+});
+
+afterAll(() =>{
+    //tudo que precisa ser feito após os testes;
+    //exemplo: encerrar conexão a base de dados;
 });

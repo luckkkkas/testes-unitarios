@@ -17,10 +17,21 @@ export class Utils {
     }
 
     static diferencaDeArrays<T>(array1: T[], array2: T[]): T[] {
+        if (
+            array1.some((element) => typeof element === "object") ||
+            array2.some((element) => typeof element === "object")
+        ){
+            throw new Error("Array com Objeto da B.O.")
+        }
         return array1.filter(item => !array2.includes(item));
     }
  
     static removerDuplicados<T>(array: T[]): T[] {
+        if (array.some((element) =>{
+            return typeof element === "object"
+        })){
+            throw new Error("Passado um Aray com Objeto")
+        }
         return Array.from(new Set(array));
     }
 
@@ -47,5 +58,20 @@ export class Utils {
         const novoObjeto = { ...objeto };
         delete novoObjeto[propriedades];
         return novoObjeto;
+    }
+
+    static calcularAreaCirculo(raio: number){
+        if(raio < 0){
+            throw new Error("O raio não pode ser menor que 0")
+        }
+        return Math.PI * raio * raio;
+    }
+
+    static buscarDadosComDelay<T>(dados: T, delay: number):Promise<T>{
+        return new Promise((resolve )=>{
+            setTimeout(() =>{
+                return resolve(dados)
+            }, delay);
+        })
     }
 }
